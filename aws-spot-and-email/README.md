@@ -311,6 +311,20 @@ aws --region=us-east-1 ec2 describe-security-groups --filters Name=group-name,Va
 ```
 
 
+## Note 3: tagging
+
+I couldn't figure out how to automatically tag the instances from the command-line.
+Initially I thought maybe the `launch_specification.json` supported a `Tags` key like this:
+
+```
+  "Tags": [
+    {"Key": "app", "Value": "autofitcloud-howto-aws-spot-and-email"}
+  ]
+```
+
+but aparently that isn't supported.
+
+
 ## Security
 
 Copying your AWS access key ID and secret to the new instance might not be suitable for your use case.
