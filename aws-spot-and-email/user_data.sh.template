@@ -1,0 +1,26 @@
+#!/bin/bash
+# Will run as sudo on spot ec2 instance when launched
+# https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html
+
+# aws configuration on launched spot instance
+aws_access_key_id={{aws_access_key_id}}
+aws_secret_access_key={{aws_secret_access_key}}
+to_email={{to_email}}
+
+# install awscli
+apt-get update
+apt-get install python3-pip
+pip3 install awscli
+
+# configure awscli
+aws configure set aws_access_key_id $aws_access_key_id
+aws configure set aws_secret_access_key $aws_secret_access_key
+aws configure set region us-east-1
+
+# send email
+aws --region us-east-1 \
+  ses send-email \
+  --from "$to_email" \
+  --to "$to_email" \
+  --subject 'spot launched' \
+  --text 'hey hey hey'"
