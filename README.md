@@ -7,4 +7,4 @@ Some how-to instructions
 
 ## License
 
-Check [[LICENSE]] (Apache 2.0)
+Check [LICENSE](LICENSE) (Apache 2.0)
