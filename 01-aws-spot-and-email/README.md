@@ -17,7 +17,7 @@ The following steps will
 - terminate the instance after 60 minutes
 
 
-Download this repository
+Download the repository
 
 ```
 git clone https://github.com/autofitcloud/howto/ autofitcloud-howto
@@ -148,11 +148,17 @@ Output similar to (check notes in-line in json for further info)
 ```
 {   
     "SpotInstanceRequests": [
-        {   
-            "ActualBlockHourlyPrice": "0.023000",  # <<<<<<<< Got 2.3 cents per hour, even if specified max price of 30 cents per hour
+        {
+            # Got 2.3 cents per hour, even if specified max price of 30 cents per hour
+            #                        vvvvvvvvvvv   
+            "ActualBlockHourlyPrice": "0.023000",
             "BlockDurationMinutes": 60,
             "CreateTime": "2019-12-31T07:51:31.000Z",
-            "InstanceId": "i-123456789",      # <<<<<<<< Instance ID, useful to get public IP address and ssh
+
+            # Instance ID, useful to get public IP address and ssh
+            #             vvvvvvvvvvvvv
+            "InstanceId": "i-123456789",
+
             "LaunchSpecification": {
                 "SecurityGroups": [
                     {   
@@ -179,8 +185,11 @@ Output similar to (check notes in-line in json for further info)
             "Status": {
                 "Code": "fulfilled",
                 "Message": "Your spot request is fulfilled.", # <<<<<<<<<<<<< HOORAY!
-                "UpdateTime": "2019-12-31T07:51:32.000Z" # <<<<<<<<<<<<<<< Make sure that this is matching with the current date, i.e. command `date -u`.
-                                                         # If the client-token field above is forgotten to be updated between requests, this will just return the previously launched spot instance data
+
+                # Make sure that the UpdateTime is matching with the current date, i.e. command `date -u`.
+                # If the client-token field above is forgotten to be updated between requests, this will just return the previously launched spot instance data
+                #vvvvvvvvvv
+                "UpdateTime": "2019-12-31T07:51:32.000Z"
             },
             "Tags": [],
             "Type": "one-time",
@@ -212,8 +221,12 @@ Output will be similar to the below (check notes in-line in json)
                     "InstanceId": "i-123456789",
                     "InstanceType": "t3.medium",
                     "KeyName": "shadi",
-                    "LaunchTime": "2019-12-31T07:51:32.000Z", # <<<<<<<< Make sure this matches with the current `date -u` to make sure it's a "fresh" instance.
-                                                              # Forgetting to update the `client-token` field above could return an already-existing instance
+
+                    # Make sure this matches with the current `date -u` to make sure it's a "fresh" instance.
+                    # Forgetting to update the `client-token` field above could return an already-existing instance
+                    # vvvvvvvvvv
+                    "LaunchTime": "2019-12-31T07:51:32.000Z",
+
                     "Monitoring": {
                         "State": "disabled"
                     },
@@ -261,16 +274,16 @@ isitfit cost analyze
 Output similar to
 
 ```
-Cost-Weighted Average Utilization (CWAU) of the AWS account (EC2, Redshift):
-
-Service Field
-ec2     Start date          2019-12-24  2019-12-25  2019-12-26  2019-12-27  2019-12-28  2019-12-29  2019-12-30     2019-12-31
-        End date            2019-12-24  2019-12-25  2019-12-26  2019-12-27  2019-12-28  2019-12-29  2019-12-30     2019-12-31
-        Regions                      0           0           0           0           0           0           0  1 (us-east-1)
-        Resources analyzed           0           0           0           0           0           0           0              2
-        Billed cost                0 $         0 $         0 $         0 $         0 $         0 $         0 $            0 $
-        Used cost                  0 $         0 $         0 $         0 $         0 $         0 $         0 $            0 $
-        CWAU (Used/Billed)         0 %         0 %         0 %         0 %         0 %         0 %         0 %            0 %
+    Cost-Weighted Average Utilization (CWAU) of the AWS account (EC2, Redshift):
+    
+    Service Field
+    ec2     Start date          2019-12-31
+            End date            2019-12-31
+            Regions             1 (us-east-1)
+            Resources analyzed  2
+            Billed cost         2 $
+            Used cost           1 $
+            CWAU (Used/Billed)  50 %
 ```
 
 and
@@ -282,12 +295,12 @@ isitfit cost optimize
 with output similar to 
 
 ```
-+-----------+-----------+---------------------+------------------+------------------+--------------------+-------------------------+-----------+---------------------+-----------+--------+-------------------------+
-| service   | region    | resource_id         | resource_size1   | resource_size2   | classification_1   | classification_2        |   cost_3m | recommended_size1   |   savings | tags   | dt_detected             |
-|-----------+-----------+---------------------+------------------+------------------+--------------------+-------------------------+-----------+---------------------+-----------+--------+-------------------------|
-| EC2       | us-east-1 | i-1                 | t3.medium        |                  | Idle               | No memory metrics       |       106 | t3.small            |       -53 |        | 2019-12-31 08:21:03.... |
-| EC2       | us-east-1 | i-2                 | t3.medium        |                  | Not enough data    | 1 day(s) available. ... |       106 |                     |         0 |        | 2019-12-31 08:21:03.... |
-+-----------+-----------+---------------------+------------------+------------------+--------------------+-------------------------+-----------+---------------------+-----------+--------+-------------------------+
+    +-----------+-----------+--------------+----------------+--------------------+
+    | service   | region    | resource_id  | resource_size1 | classification_1   |
+    |-----------+-----------+------------+------------------+--------------------|
+    | EC2       | us-east-1 | i-1          | t3.medium      | Idle               |
+    | EC2       | us-east-1 | i-2          | t3.medium      | Not enough data    |
+    +-----------+-----------+--------------+----------------+--------------------+
 ```
 
 
@@ -329,7 +342,7 @@ Initially I thought maybe the `launch_specification.json` supported a `Tags` key
   ]
 ```
 
-but aparently that isn't supported.
+but apparently that isn't supported.
 
 
 ## Security
