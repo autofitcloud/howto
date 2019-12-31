@@ -1,6 +1,6 @@
 # howto/01-aws-spot-and-email
 
-*How to request an AWS spot instance and send email upon fulfillment*
+*How to request an AWS spot instance and receive an email upon fulfillment*
 
 Useful for spot requests that take some time to get fulfilled
 
