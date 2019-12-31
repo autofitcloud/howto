@@ -9,7 +9,7 @@ to_email={{to_email}}
 
 # install awscli
 apt-get update
-apt-get install python3-pip
+apt-get install -y python3-pip
 pip3 install awscli
 
 # configure awscli
@@ -23,4 +23,4 @@ aws --region us-east-1 \
   --from "$to_email" \
   --to "$to_email" \
   --subject 'spot launched' \
-  --text 'hey hey hey'"
+  --text 'hey hey hey'
