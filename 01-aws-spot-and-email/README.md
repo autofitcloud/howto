@@ -1,4 +1,4 @@
-# howto/aws-spot-and-email
+# howto/01-aws-spot-and-email
 
 *How to request an AWS spot instance and send email upon fulfillment*
 
@@ -20,14 +20,14 @@ Download this repository
 
 ```
 git clone https://github.com/autofitcloud/howto/ autofitcloud-howto
-cd autofitcloud-howto/aws-spot-and-email
+cd autofitcloud-howto/01-aws-spot-and-email
 
 OR IF YOU DONT HAVE GIT
 
 wget https://github.com/autofitcloud/howto/archive/master.zip -O autofitcloud_howto.zip
 unzip autofitcloud_howto.zip
 mv howto-master autofitcloud-howto
-cd autofitcloud-howto/aws-spot-and-email
+cd autofitcloud-howto/01-aws-spot-and-email
 ```
 
 Copy templated files

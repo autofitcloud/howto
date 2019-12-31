@@ -2,7 +2,7 @@
 
 Some how-to instructions
 
-- [Request a spot instance in AWS and send email](aws-spot-and-email)
+- [Request a spot instance in AWS and send email](01-aws-spot-and-email)
 
 
 ## License
