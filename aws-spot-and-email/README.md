@@ -362,3 +362,10 @@ https://github.com/apls777/spotty
 https://github.com/Jakobovski/aws-spot-bot
 
 - deprecated
+
+
+http://technologist.pro/devops/aws-ec2-automation-using-aws-cli-and-user-data
+
+- useful tutorial on awscli and create/terminate ec2
+- also stresses the importance of tagging ... agreed
+- a few years down the line, you'll have that one machine that nobody knows who it belongs to without ssh'ing into it and dissecting the filesystem
