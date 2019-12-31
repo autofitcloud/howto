@@ -19,9 +19,15 @@ The following steps will
 Download this repository
 
 ```
+git clone https://github.com/autofitcloud/howto/ autofitcloud-howto
+cd autofitcloud-howto/aws-spot-and-email
+
+OR IF YOU DONT HAVE GIT
+
 wget https://github.com/autofitcloud/howto/archive/master.zip -O autofitcloud_howto.zip
 unzip autofitcloud_howto.zip
-cd howto-master/aws-spot-and-email
+mv howto-master autofitcloud-howto
+cd autofitcloud-howto/aws-spot-and-email
 ```
 
 Copy templated files
