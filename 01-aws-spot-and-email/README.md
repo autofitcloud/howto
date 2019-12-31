@@ -2,9 +2,10 @@
 
 *How to automatically receive an email upon fulfillment of an AWS spot instance request*
 
-Useful for spot requests that take some time to get fulfilled
+Useful for [AWS spot instances](https://aws.amazon.com/ec2/spot/) whose requests take some time to get fulfilled, eg
+for large instance types like `x1e.32xlarge` with 3TB of memory or AWS regions that don't have enough EC2 supply
 
-Triggered from [this reddit discussion](https://www.reddit.com/r/aws/comments/ehm1ah/best_aws_solution_for_high_memory_usage/fckm1g5)
+This tutorial was written in response to [this reddit discussion](https://www.reddit.com/r/aws/comments/ehm1ah/best_aws_solution_for_high_memory_usage/fckm1g5)
 
 
 ## Usage
