@@ -12,10 +12,9 @@ apt-get update
 apt-get install -y python3-pip
 pip3 install awscli
 
-# install cloud-utils
+# install cloud-utils and get self's ID
+# https://stackoverflow.com/a/10600619/4126114
 apt-get install cloud-utils
-
-# get self's ID
 instance_id=`ec2metadata --instance-id`
 
 # configure awscli
