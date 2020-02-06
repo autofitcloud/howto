@@ -1,0 +1,10 @@
+{
+  "ImageId": "ami-00a208c7cdba991ea",
+  "KeyName": "{{KeyName}}",
+  "SecurityGroupIds": [],
+  "InstanceType": "c5.large",
+  "UserData": "file://user_data.sh.b64",
+  "Placement": {
+    "AvailabilityZone": "us-east-1a"
+  }
+}

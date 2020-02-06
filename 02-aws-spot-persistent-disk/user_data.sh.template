@@ -1,0 +1,31 @@
+#!/bin/bash
+# Will run as sudo on spot ec2 instance when launched
+# https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html
+
+# aws configuration on launched spot instance
+aws_access_key_id={{aws_access_key_id}}
+aws_secret_access_key={{aws_secret_access_key}}
+volume_id={{volume_id}}
+
+# install awscli
+apt-get update
+apt-get install -y python3-pip
+pip3 install awscli
+
+# install cloud-utils
+apt-get install cloud-utils
+
+# get self's ID
+instance_id=`ec2metadata --instance-id`
+
+# configure awscli
+aws configure set aws_access_key_id $aws_access_key_id
+aws configure set aws_secret_access_key $aws_secret_access_key
+aws configure set region us-east-1
+
+# attach disk
+aws --region us-east-1 \
+  ec2 attach-volume \
+  --volume-id "$volume_id" \
+  --instance-id "$instance_id" \
+  --device /dev/sdh
