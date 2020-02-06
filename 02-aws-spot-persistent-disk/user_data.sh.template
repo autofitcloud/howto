@@ -7,15 +7,18 @@ aws_access_key_id={{aws_access_key_id}}
 aws_secret_access_key={{aws_secret_access_key}}
 volume_id={{volume_id}}
 
-# install awscli
+# install awscli on ubuntu. Use `yum` for amazon linux.
 apt-get update
 apt-get install -y python3-pip
 pip3 install awscli
 
-# install cloud-utils and get self's ID
+# get self's ID
+# Method 1: install cloud-utils (tested on amazon linux and failed: not found with yum)
 # https://stackoverflow.com/a/10600619/4126114
-apt-get install cloud-utils
-instance_id=`ec2metadata --instance-id`
+# apt-get install cloud-utils
+# instance_id=`ec2metadata --instance-id`
+# Method 2: wget a mirror URL (works)
+instance_id=`wget -q -O - http://169.254.169.254/latest/meta-data/instance-id`
 
 # configure awscli
 aws configure set aws_access_key_id $aws_access_key_id
@@ -28,3 +31,11 @@ aws --region us-east-1 \
   --volume-id "$volume_id" \
   --instance-id "$instance_id" \
   --device /dev/sdh
+
+# mount disk
+mkdir /minecraft-data
+mount /dev/xvdh /minecraft-data/
+
+# start minecraft server
+cd /minecraft-data
+java -Xmx2048M -Xms1024M -jar minecraft_server.1.15.2.jar nogui

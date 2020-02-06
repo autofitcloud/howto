@@ -53,6 +53,7 @@ Replace variables in curly braces in new files with your own values, eg
 ```
 launch_specification.json:
   KeyName: shadi # use `aws --region=us-east-1 ec2 describe-key-pairs` to list available key names in your account
+  AvailabilityZone # use the same zone as the minecraft disk, otherwise aws will not let you attach it
 
 user_data.sh:
   aws_access_key_id: abcdef # copy from ~/.aws/credentials
